@@ -2,13 +2,13 @@
 <html>
     <title>Rock, Paper, Scissors</title>
     <script>
-        function computerPlay() {
+        function computerPlay() { // Decides what the computer will play
                 const choices = ["rock", "paper", "scissors"];
                 const rand = Math.floor(Math.random() * 3);
 
                 return choices[rand]
         }
-        function gamePlay(playerSelection, computerSelection){
+        function gamePlay(playerSelection, computerSelection){ // Decides who wins the round
             if (computerSelection === playerSelection){
                 return "Draw";
             } else if (playerSelection === "rock"){
@@ -32,7 +32,7 @@
             }
             
         }
-        function letsPlay(){
+        function letsPlay(){ // plays a round and declares winner
             const player = prompt("what is your choice?");
             const playerSelection = player.toLowerCase();
             const computerSelection = computerPlay();
@@ -54,10 +54,10 @@
         let computerScore = 0;
         let rounds = 0;
 
-        while (rounds < 5){
+        while (rounds < 5){ //best of 5 checker
             letsPlay();
         }
-        if (playerScore > computerScore){
+        if (playerScore > computerScore){ // winner of overall game
             console.log("winner, winner, chicken dinner");
         } else if (computerScore > playerScore){
             console.log("try again, LOOOOSER!!");
