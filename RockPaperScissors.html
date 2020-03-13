@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <title>Rock, Paper, Scissors</title>
+    <script>
+        function computerPlay() {
+                const choices = ["rock", "paper", "scissors"];
+                const rand = Math.floor(Math.random() * 3);
+
+                return choices[rand]
+        }
+        function gamePlay(playerSelection, computerSelection){
+            if (computerSelection === playerSelection){
+                return "Draw";
+            } else if (playerSelection === "rock"){
+                if (computerSelection === "scissors"){
+                    return "Win"
+                } else {
+                    return "Lose"
+                }
+            } else if (playerSelection === "paper"){
+                if (computerSelection === "rock"){
+                    return "Win"
+                } else {
+                    return "Lose"
+                }
+            } else if (playerSelection === "scissors"){
+                if (computerSelection === "paper"){
+                    return "Win"
+                } else {
+                    return "Lose"
+                }
+            }
+            
+        }
+        function letsPlay(){
+            const player = prompt("what is your choice?");
+            const playerSelection = player.toLowerCase();
+            const computerSelection = computerPlay();
+            const result = gamePlay(playerSelection, computerSelection);
+            if (result == "Win"){
+                rounds += 1
+                playerScore += 1
+                console.log("You win!");
+            } else if (result == "Lose"){
+                rounds += 1
+                computerScore += 1
+                console.log("You lose!");
+            } else {
+                rounds += 1
+                console.log("It's a draw!");
+            }
+        }
+        let playerScore = 0;
+        let computerScore = 0;
+        let rounds = 0;
+
+        while (rounds < 5){
+            letsPlay();
+        }
+        if (playerScore > computerScore){
+            console.log("winner, winner, chicken dinner");
+        } else if (computerScore > playerScore){
+            console.log("try again, LOOOOSER!!");
+        } else {(console.log("You suck so much you drew!"))}
+
+    </script>
+</html>
