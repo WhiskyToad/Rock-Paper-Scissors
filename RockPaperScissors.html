@@ -40,8 +40,8 @@
             if (result == "Win"){
                 rounds += 1
                 playerScore += 1
-                console.log("You win!");
-            } else if (result == "Lose"){
+                console.log("You win!, Player: " + playerScore + " vs " + computerScore + " :Computer.");
+            } else if (result == "Lose, Player: " + playerScore + " vs " + computerScore + " :Computer."){
                 rounds += 1
                 computerScore += 1
                 console.log("You lose!");
@@ -53,12 +53,13 @@
         let playerScore = 0;
         let computerScore = 0;
         let rounds = 0;
+        
 
         while (rounds < 5){ //best of 5 checker
             letsPlay();
         }
         if (playerScore > computerScore){ // winner of overall game
-            console.log("winner, winner, chicken dinner");
+            console.log("winner, winner, chicken dinner final scores:\nPlayer: " + playerScore + " vs " + computerScore + " :Computer.");
         } else if (computerScore > playerScore){
             console.log("try again, LOOOOSER!!");
         } else {(console.log("You suck so much you drew!"))}
