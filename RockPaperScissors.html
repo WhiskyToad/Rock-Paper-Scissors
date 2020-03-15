@@ -2,6 +2,13 @@
 <html>
     <title>Rock, Paper, Scissors</title>
     <script>
+
+
+        let playerScore = 0;
+        let computerScore = 0;
+        let rounds = 0;
+
+
         function computerPlay() { // Decides what the computer will play
                 const choices = ["rock", "paper", "scissors"];
                 const rand = Math.floor(Math.random() * 3);
@@ -33,36 +40,59 @@
             
         }
         function letsPlay(){ // plays a round and declares winner
-            const player = prompt("what is your choice?");
+            const player = prompt("what is your choice?\n Rock, Paper or Scissors only");
             const playerSelection = player.toLowerCase();
             const computerSelection = computerPlay();
             const result = gamePlay(playerSelection, computerSelection);
             if (result == "Win"){
                 rounds += 1
                 playerScore += 1
-                console.log("You win!, Player: " + playerScore + " vs " + computerScore + " :Computer.");
-            } else if (result == "Lose, Player: " + playerScore + " vs " + computerScore + " :Computer."){
+                console.log("You win! " + playerSelection + " beats " + computerSelection + "\n Player: " + playerScore + " vs " + computerScore + " :Computer.")
+                roundChecker();
+            } else if (result == "Lose"){
                 rounds += 1
                 computerScore += 1
-                console.log("You lose!");
+                console.log("You lose! " + computerSelection + " beats " + playerSelection + "\n Player: " + playerScore + " vs " + computerScore + " :Computer.")
+                roundChecker();
             } else {
                 rounds += 1
-                console.log("It's a draw!");
+                console.log("It's a draw! You both picked " + playerSelection + "\n Player: " + playerScore + " vs " + computerScore + " :Computer.")
+                roundChecker();
             }
         }
-        let playerScore = 0;
-        let computerScore = 0;
-        let rounds = 0;
-        
 
-        while (rounds < 5){ //best of 5 checker
-            letsPlay();
+       function coinToss(){ // Tosses a coin to decide winner
+           const coinChoice = prompt("Heads or Tails?").toLowerCase();
+           const coins = ["heads", "tails"];
+           const coinFlip = coins[Math.floor(Math.random() * 2)];
+           if (coinFlip === coinChoice){
+               console.log("And it's " + coinChoice)
+               playerScore += 1
+                whoWins();
+           }else{ 
+               console.log("Not today pal!")
+               computerScore += 1
+               whoWins();
+               }
+       }
+
+
+        function whoWins(){ // winner of overall game
+            if (playerScore > computerScore){ 
+                console.log("Winner, Winner, Chicken dinner final scores:\nPlayer: " + playerScore + " vs " + computerScore + " :Computer.");
+            } else if (computerScore > playerScore){
+                console.log("try again, LOOOOSER!!");
+            } else {
+                (console.log("You suck so much you drew!\n But we will let you toss a coin...."))
+                coinToss()
+                }
         }
-        if (playerScore > computerScore){ // winner of overall game
-            console.log("winner, winner, chicken dinner final scores:\nPlayer: " + playerScore + " vs " + computerScore + " :Computer.");
-        } else if (computerScore > playerScore){
-            console.log("try again, LOOOOSER!!");
-        } else {(console.log("You suck so much you drew!"))}
 
+        function roundChecker(){ // Checks round count and plays a round 
+            if (rounds < 5){
+                letsPlay();
+            } else whoWins();
+        }
+        roundChecker()
     </script>
 </html>
